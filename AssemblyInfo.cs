@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("UseYourArmyToBuildImprovements")]
+[assembly: AssemblyTitle("TroopConstructionBonus")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("UseYourArmyToBuildImprovements")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyProduct("TroopConstructionBonus")]
+[assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("6f1421ec-df67-4d2d-a891-8eee652d4f29")]

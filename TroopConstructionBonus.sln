@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseYourArmyToBuildImprovements", "UseYourArmyToBuildImprovements.csproj", "{0DCF9DB9-20F7-4A62-BC9A-960A358EE242}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TroopConstructionBonus", "TroopConstructionBonus.csproj", "{0DCF9DB9-20F7-4A62-BC9A-960A358EE242}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0899C53-4ACE-4EBE-B8DA-03F20B98428F}
 	EndGlobalSection
 EndGlobal

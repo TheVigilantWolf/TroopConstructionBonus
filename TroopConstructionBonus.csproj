@@ -6,12 +6,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0DCF9DB9-20F7-4A62-BC9A-960A358EE242}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>UseYourArmyToBuildImprovements</AssemblyName>
+    <AssemblyName>TroopConstructionBonus</AssemblyName>
     <LangVersion>8.0</LangVersion>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <FileAlignment>512</FileAlignment>
-    <RootNamespace>UseYourArmyToBuildImprovements</RootNamespace>
+    <RootNamespace>TroopConstructionBonus</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,9 +80,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArmyBuildingConstructionModel.cs" />
+    <Compile Include="patches.cs" />
     <Compile Include="SubModule.cs" />
     <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
