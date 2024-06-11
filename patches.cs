@@ -45,7 +45,7 @@ namespace TroopConstructionBonus
                 }
                 result.LimitMin(0.0f);
             } catch (Exception ex) {
-            Debugger.Break();
+                Debugger.Break();
             }
         }
         private static float GetArmyEngineerBonus()
