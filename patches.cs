@@ -38,6 +38,10 @@ namespace TroopConstructionBonus
                             if (andAttachedParty.CurrentSettlement == Hero.MainHero.CurrentSettlement)
                                 manpowerBonus += andAttachedParty.Party.NumberOfHealthyMembers;
                         }
+                        if (MobileParty.MainParty.CurrentSettlement == Hero.MainHero.CurrentSettlement)
+                        {
+                            manpowerBonus += MobileParty.MainParty.Party.NumberOfHealthyMembers;
+                        }
                     }
                     float totalArmyBonus = armyEngineerBonus + (manpowerBonus / SubModule.MenPerBrick);
                     __result.Add(totalArmyBonus, ArmyConstructionBonusText, null);
