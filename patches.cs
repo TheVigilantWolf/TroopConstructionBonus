@@ -20,10 +20,11 @@ namespace TroopConstructionBonus
         public const int CastleBoostBonus = 20;
         private static readonly TextObject ArmyConstructionBonusText = new TextObject("{=armycon}Player Army Bonus", (Dictionary<string, object>)null);
        
-        private static void Postfix(Town town, ref ExplainedNumber result, bool omitBoost = false)
+        private static void Postfix(ref int __result, Town town, ref ExplainedNumber result, bool omitBoost = false)
         {
             {
                 result.Add(10, new TextObject("test"));
+                __result = (int)result.ResultNumber;
                 /*if (Hero.MainHero.CurrentSettlement == town.Settlement && town.OwnerClan == Hero.MainHero.Clan)
                 {
                     float armyEngineerBonus = GetArmyEngineerBonus();
@@ -46,7 +47,7 @@ namespace TroopConstructionBonus
                 result.LimitMin(0.0f);*/
             }
         }
-        private static float GetArmyEngineerBonus()
+        /*private static float GetArmyEngineerBonus()
         {
             MobileParty mainParty = MobileParty.MainParty;
             if (mainParty.EffectiveEngineer == null)
@@ -55,6 +56,6 @@ namespace TroopConstructionBonus
             if (num > 300.0f)
                 num = 300f;
             return num * SubModule.BricksPerEngineerSkillPoint;
-        }
+        }*/
     }
 }
