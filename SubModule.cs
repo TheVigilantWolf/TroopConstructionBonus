@@ -24,6 +24,7 @@ namespace TroopConstructionBonus
     {
       base.OnSubModuleLoad();
       SubModule.LoadConfig();
+      new Harmony("TroopConstructionBonus").PatchAll(); 
     }
 
     private static void LoadConfig()
