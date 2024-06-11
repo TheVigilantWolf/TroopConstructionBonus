@@ -10,21 +10,20 @@ using TroopConstructionBonus;
 
 namespace TroopConstructionBonus
 {
-    internal class Patches
+    [HarmonyPatch(typeof(DefaultBuildingConstructionModel), "CalculateDailyConstructionPowerInternal")]
+    class patches
     {
         public const int TownBoostCost = 500;
         public const int TownBoostBonus = 50;
         public const int CastleBoostCost = 250;
         public const int CastleBoostBonus = 20;
         private static readonly TextObject ArmyConstructionBonusText = new TextObject("{=armycon}Player Army Bonus", (Dictionary<string, object>)null);
-       
-        [HarmonyPatch(typeof(DefaultBuildingConstructionModel), "CalculateDailyConstructionPower")]
         
-        private void Postfix(Town town, ref ExplainedNumber result)
+        private static void Postfix(Town town, ref ExplainedNumber result)
         {
             if (Hero.MainHero.CurrentSettlement == town.Settlement && town.OwnerClan == Hero.MainHero.Clan)
             {
-                float armyEngineerBonus = this.GetArmyEngineerBonus();
+                float armyEngineerBonus = GetArmyEngineerBonus();
                 float manpowerBonus = 0.0f; // Declare the variable here
                 if (MobileParty.MainParty.Army == null)
                 {
@@ -43,7 +42,7 @@ namespace TroopConstructionBonus
             }
             result.LimitMin(0.0f);
         }
-        private float GetArmyEngineerBonus()
+        private static float GetArmyEngineerBonus()
         {
             MobileParty mainParty = MobileParty.MainParty;
             if (mainParty.EffectiveEngineer == null)
