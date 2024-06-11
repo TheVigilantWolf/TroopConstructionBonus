@@ -8,7 +8,7 @@ using HarmonyLib;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.CampaignSystem.Party;
-//
+
 namespace TroopConstructionBonus
 {
     [HarmonyPatch(typeof(DefaultBuildingConstructionModel), "CalculateDailyConstructionPowerInternal")]
