@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Diagnostics;
+using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.Localization;
@@ -6,7 +8,6 @@ using HarmonyLib;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.CampaignSystem.Party;
-using TroopConstructionBonus;
 
 namespace TroopConstructionBonus
 {
@@ -18,29 +19,34 @@ namespace TroopConstructionBonus
         public const int CastleBoostCost = 250;
         public const int CastleBoostBonus = 20;
         private static readonly TextObject ArmyConstructionBonusText = new TextObject("{=armycon}Player Army Bonus", (Dictionary<string, object>)null);
-        
-        private static void Postfix(Town town, ref ExplainedNumber result)
+       
+        private static void Postfix(Town town, ref ExplainedNumber result, bool omitBoost = false)
         {
-            if (Hero.MainHero.CurrentSettlement == town.Settlement && town.OwnerClan == Hero.MainHero.Clan)
+            try
             {
-                float armyEngineerBonus = GetArmyEngineerBonus();
-                float manpowerBonus = 0.0f; // Declare the variable here
-                if (MobileParty.MainParty.Army == null)
+                if (Hero.MainHero.CurrentSettlement == town.Settlement && town.OwnerClan == Hero.MainHero.Clan)
                 {
-                    manpowerBonus = MobileParty.MainParty.Party.NumberOfHealthyMembers;
-                }
-                else
-                {
-                    foreach (MobileParty andAttachedParty in MobileParty.MainParty.Army.LeaderParty.AttachedParties)
+                    float armyEngineerBonus = GetArmyEngineerBonus();
+                    float manpowerBonus = 0.0f; // Declare the variable here
+                    if (MobileParty.MainParty.Army == null)
                     {
-                        if (andAttachedParty.CurrentSettlement == Hero.MainHero.CurrentSettlement)
-                            manpowerBonus += andAttachedParty.Party.NumberOfHealthyMembers;
+                        manpowerBonus = MobileParty.MainParty.Party.NumberOfHealthyMembers;
                     }
+                    else
+                    {
+                        foreach (MobileParty andAttachedParty in MobileParty.MainParty.Army.LeaderParty.AttachedParties)
+                        {
+                            if (andAttachedParty.CurrentSettlement == Hero.MainHero.CurrentSettlement)
+                                manpowerBonus += andAttachedParty.Party.NumberOfHealthyMembers;
+                        }
+                    }
+                    float totalArmyBonus = armyEngineerBonus + (manpowerBonus / SubModule.MenPerBrick);
+                    result.Add(totalArmyBonus, ArmyConstructionBonusText, null);
                 }
-                float totalArmyBonus = armyEngineerBonus + (manpowerBonus / SubModule.MenPerBrick);
-                result.Add(totalArmyBonus, ArmyConstructionBonusText, null);
+                result.LimitMin(0.0f);
+            } catch (Exception ex) {
+            Debugger.Break();
             }
-            result.LimitMin(0.0f);
         }
         private static float GetArmyEngineerBonus()
         {
