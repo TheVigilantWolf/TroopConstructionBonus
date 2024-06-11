@@ -22,9 +22,9 @@ namespace TroopConstructionBonus
        
         private static void Postfix(Town town, ref ExplainedNumber result, bool omitBoost = false)
         {
-            try
             {
-                if (Hero.MainHero.CurrentSettlement == town.Settlement && town.OwnerClan == Hero.MainHero.Clan)
+                result.Add(10, new TextObject("test"));
+                /*if (Hero.MainHero.CurrentSettlement == town.Settlement && town.OwnerClan == Hero.MainHero.Clan)
                 {
                     float armyEngineerBonus = GetArmyEngineerBonus();
                     float manpowerBonus = 0.0f; // Declare the variable here
@@ -43,9 +43,7 @@ namespace TroopConstructionBonus
                     float totalArmyBonus = armyEngineerBonus + (manpowerBonus / SubModule.MenPerBrick);
                     result.Add(totalArmyBonus, ArmyConstructionBonusText, null);
                 }
-                result.LimitMin(0.0f);
-            } catch (Exception ex) {
-                Debugger.Break();
+                result.LimitMin(0.0f);*/
             }
         }
         private static float GetArmyEngineerBonus()
