@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using HarmonyLib;
 
 #nullable disable
 namespace TroopConstructionBonus
